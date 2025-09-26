@@ -1,5 +1,7 @@
-// build: g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-5.0 ` -o app
+// build Windows:  g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-5.0 ` -o app -DUSE_LIBGDA6
 // must install:  pacman -S mingw-w64-x86_64-libgda
+// build Debian13: g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-5.0 ` -o app
+
 #include <gtkmm.h>
 #include <string>
 #include <iostream>
@@ -107,7 +109,11 @@ public:
             g_error_free(execute_error);
         }
 
+#ifdef USE_LIBGDA6
+        gda_connection_close(connection, NULL);
+#else
         gda_connection_close(connection);
+#endif
         g_object_unref(connection);
         return result;
     }
@@ -190,7 +196,11 @@ private:
             g_error_free(error);
         }
 
+#ifdef USE_LIBGDA6
+        gda_connection_close(connection, NULL);
+#else
         gda_connection_close(connection);
+#endif
         g_object_unref(connection);
         return column_names;
     }
@@ -226,8 +236,11 @@ private:
             std::cerr << "Error get types of columns: " << error->message << std::endl;
             g_error_free(error);
         }
-
+#ifdef USE_LIBGDA6
+        gda_connection_close(connection, NULL);
+#else
         gda_connection_close(connection);
+#endif
         g_object_unref(connection);
         return column_types;
     }
