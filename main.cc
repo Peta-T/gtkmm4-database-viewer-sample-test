@@ -1,4 +1,4 @@
-// build Windows:  g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-5.0 ` -o app -DUSE_LIBGDA6
+// build Windows:  g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-6.0 ` -o app -DUSE_LIBGDA6
 // must install:  pacman -S mingw-w64-x86_64-libgda
 // build Debian13: g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-5.0 ` -o app
 
