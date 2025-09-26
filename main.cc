@@ -1,4 +1,5 @@
 // build: g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-5.0 ` -o app
+// must install:  pacman -S mingw-w64-x86_64-libgda
 #include <gtkmm.h>
 #include <string>
 #include <iostream>
