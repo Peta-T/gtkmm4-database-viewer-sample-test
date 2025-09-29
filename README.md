@@ -31,6 +31,7 @@ Type/paste
    zip \\ \
    unzip \\ \
    git \\ \
+   mingw-w64-x86_64-libgda \\ \
    --needed
 
 When prompted, just hit return. Sit back and wait for it to install what’s almost a complete linux environment.
@@ -46,7 +47,7 @@ Before continuing you may change to another directory. It easiest to type cd fol
 6.) Build it - type on command line:
 ------------------------------------
 
-   
+  g++ -std=c++20 main.cc `pkg-config --cflags --libs gtkmm-4.0 libgda-6.0 ` -o app -DUSE_LIBGDA6
 
 7.) Run app - type on command line:
 -----------------------------------
